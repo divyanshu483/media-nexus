@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | Media Nexus</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+:root {
+    --main: #7c4dff;
+    --main-glow: rgba(124, 77, 255, 0.4);
+    --bg: #0a0514;
+    --card: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.08);
+    --text-muted: #a0a0a0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(10, 5, 20, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+}
+
+nav h1 {
+    font-weight: 800;
+    font-size: 1.5rem;
+    background: linear-gradient(to right, #fff, var(--main));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* HERO */
+.services-hero {
+    padding: 180px 8% 80px;
+    text-align: center;
+    background: radial-gradient(circle at 50% 0%, #1a0b35 0%, var(--bg) 100%);
+}
+
+.services-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 20px;
+}
+
+.highlight {
+    background: linear-gradient(90deg, #b388ff, #00e5ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.services-hero p {
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* SECTION */
+.services-section {
+    padding: 80px 8%;
+    max-width: 1400px;
+    margin: auto;
+}
+
+/* GRID */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+/* CENTER TITLE */
+.service-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+/* FULL IMAGE */
+.service-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+/* TEXT */
+.service-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    text-align: center;
+}
+/* CARD */
+.service-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 40px 30px;
+    border-radius: 25px;
+    transition: 0.4s;
+}
+
+.service-box:hover {
+    transform: translateY(-10px);
+    border-color: var(--main);
+    background: rgba(124, 77, 255, 0.05);
+    box-shadow: 0 20px 40px var(--main-glow);
+}
+
+/* IMAGE */
+/* small icon (if you ever use icons again) */
+.service-box .icon {
+    width: 55px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px var(--main-glow));
+}
+
+/* FULL IMAGE (your new layout) */
+.service-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 200px;
+    box-shadow: 0 10px 25px var(--main-glow);
+}
+
+.service-box h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.service-box p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+/* LIST */
+.service-box ul {
+    list-style: none;
+}
+
+.service-box ul li {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.cursor-glow { position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, var(--main-glow) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 0; transform: translate(-50%, -50%); }
+/* IMAGE WRAPPER */
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+/* IMAGE */
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* OVERLAY */
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 79px 44px;
+
+    /* keep purple tint ONLY in background */
+    background: linear-gradient(to bottom, rgba(124,77,255,0.7), rgba(124,77,255,0.2));
+
+    /* IMPORTANT */
+    color: #ffffff;
+}
+.image-overlay,
+.image-overlay p,
+.image-overlay li {
+    color: #ffffff !important;
+    opacity: 1;
+}
+.image-overlay p,
+.image-overlay li {
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}
+.image-overlay p {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+
+    /* glow for readability */
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+/* TEXT */
+.image-overlay p {
+    color: #fff;
+    font-size: 14px;
+    margin: 0;
+}
+.image-wrapper img {
+    transition: 0.4s;
+}
+
+.image-wrapper:hover img {
+    transform: scale(1.1);
+}
+
+.image-overlay {
+    transition: 0.4s;
+}
+
+.image-wrapper:hover .image-overlay {
+    background: linear-gradient(to top, rgba(124,77,255,0.8), transparent);
+}
+</style>
+</head>
+
+<body>
+<div class="cursor-glow" id="cursor"></div>
+<nav>
+        <div class="nav-container">
+            <h1>Media Nexus</h1>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="talent.html">Our Talent</a></li>
+                <li><a href="contact.html" style="color: var(--main); opacity: 1;">Contact</a></li>
+            </ul>
+            <a href="https://discord.gg/TxCWBEQnJYk" class="nav-btn" style="background:#fff; padding:10px 20px; border-radius:10px; color:#000; text-decoration:none; font-weight:700;">Discord</a>
+        </div>
+    </nav>
+
+<!-- HERO -->
+<section class="services-hero">
+    <h1 data-aos="fade-up">Our <span class="highlight">Services</span></h1>
+    <p data-aos="fade-up" data-aos-delay="100">
+        We provide everything you need to grow your brand, manage your content, and maximize your reach.
+    </p>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section">
+    <div class="services-grid">
+
+        <div class="service-box" data-aos="fade-up">
+
+    <h3 class="service-title">Sponsorship Deals</h3>
+
+    <div class="image-wrapper">
+        <img src="https://i.postimg.cc/nc7yvJyp/blue-book-removebg-preview.png" alt="service image">
+
+        <div class="image-overlay">
+            <p>
+1. Brand matching<br>
+2. Deal term negotiation<br>
+3. Long-term collaborations<br>
+4. Performance analysis<br>
+5. Rate optimization</p>
+        </div>
+    </div>
+</div>
+        <div class="service-box" data-aos="fade-up">
+
+    <h3 class="service-title">Creator Management</h3>
+
+    <div class="image-wrapper">
+        <img src="https://i.postimg.cc/nc7yvJyp/blue-book-removebg-preview.png" alt="service image">
+
+        <div class="image-overlay">
+            <p>
+1. Tailored Content Strategies<br>
+2. Brand Positioning and Identity<br>
+3. Engaged Audience Growth<br>
+4. Measurable Analytics<br>
+5. Holistic Brand Support</p>
+        </div>
+    </div>
+</div>
+
+        <div class="service-box" data-aos="fade-up">
+
+    <h3 class="service-title">Media Management</h3>
+
+    <div class="image-wrapper">
+        <img src="https://i.postimg.cc/nc7yvJyp/blue-book-removebg-preview.png" alt="service image">
+
+        <div class="image-overlay">
+            <p>
+1. Content Planning<br>
+2. Social Media Posting<br>
+3. Asset Organization<br>
+4. Multi-Platform Coordination<br>
+5. Engagement Analytics</p>
+        </div>
+    </div>
+</div>
+
+    </div>
+</section>
+<footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand" data-aos="fade-up">
+                <h1 style="margin-bottom:10px;">Media Nexus</h1>
+                <p style="font-size:12px; color:var(--main); text-transform:uppercase; font-weight:600;">Creator Partnerships</p>
+                <p style="color:var(--text-muted); font-size:14px; margin-top:20px; max-width:280px;">Connecting creators with brands to build meaningful partnerships that drive growth.</p>
+                <div style="display:flex; gap:15px; margin-top:25px;">
+                    <a href="#" style="color:#fff; opacity:0.6;"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" style="color:#fff; opacity:0.6;"><i class="fab fa-instagram"></i></a>
+                    <a href="https://discord.gg/TxCWBEQnJYk" style="color:#fff; opacity:0.6;"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="index.html#services">Our Services</a></li>
+                    <li><a href="talent.html">Our Talents</a></li>
+                    <li><a href="jobs.html">Careers</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links" data-aos="fade-up" data-aos-delay="200">
+                <h4>For Creators</h4>
+                <ul>
+                    <li><a href="#">How It Works</a></li>
+                    <li><a href="#">Creator FAQ</a></li>
+                    <li><a href="#">Apply Now</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links" data-aos="fade-up" data-aos-delay="300">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 <span style="color:var(--main); font-weight:600;">Media Nexus</span>. All rights reserved.</p>
+        </div>
+    </footer>
+<style>
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; position: fixed; width: 100%; z-index: 1000; background: rgba(10, 5, 20, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 8%; }
+    nav h1 { font-weight: 800; font-size: 1.5rem; background: linear-gradient(to right, #fff, var(--main)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    nav ul { display: flex; list-style: none; gap: 25px; }
+    nav ul li a { color: #fff; text-decoration: none; font-size: 14px; opacity: 0.7; transition: 0.3s; }
+    nav ul li a:hover { opacity: 1; color: var(--main); }
+    .main-footer { background: #05020a; padding: 80px 8% 40px 8%; border-top: 1px solid var(--border); }
+    .footer-container { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 50px; max-width: 1400px; margin: 0 auto; }
+    .footer-links h4 { color: var(--main); font-size: 14px; margin-bottom: 25px; text-transform: uppercase; }
+    .footer-links ul { list-style: none; }
+    .footer-links ul li { margin-bottom: 12px; }
+    .footer-links ul li a { text-decoration: none; color: #fff; opacity: 0.7; transition: 0.3s; font-size: 14px; }
+    .footer-links ul li a:hover { opacity: 1; color: var(--main); padding-left: 5px; }
+    .footer-bottom { margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
+
+    @media(max-width: 992px) { .contact-section { grid-template-columns: 1fr; } .footer-container { grid-template-columns: 1fr 1fr; } }
+    @media(max-width: 600px) { .form-group-row { grid-template-columns: 1fr; } .footer-container { grid-template-columns: 1fr; } }
+</style>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 1000, once: true });
+const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+</script>
+
+</body>
+</html>
