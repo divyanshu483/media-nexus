@@ -7,7 +7,224 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
 
+  .svc-wrap {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    padding: 2rem 0;
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .svc-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px;
+    padding: 36px 28px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .svc-card:nth-child(1) { animation-delay: 0.05s; }
+  .svc-card:nth-child(2) { animation-delay: 0.18s; }
+  .svc-card:nth-child(3) { animation-delay: 0.31s; }
+
+  @keyframes popIn {
+    0% { opacity: 0; transform: scale(0.7) translateY(30px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .svc-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    border-color: #7c4dff;
+    box-shadow: 0 20px 40px rgba(124,77,255,0.35);
+  }
+
+  .svc-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(124,77,255,0.12) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.35s;
+    pointer-events: none;
+  }
+  .svc-card:hover::before { opacity: 1; }
+
+  .svc-logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .svc-logo.purple { background: linear-gradient(135deg,#7c4dff,#b388ff); }
+  .svc-logo.cyan   { background: linear-gradient(135deg,#00b4d8,#00e5ff); }
+  .svc-logo.violet { background: linear-gradient(135deg,#9c27b0,#7c4dff); }
+
+  .svc-title {
+    color: #7c4dff;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: -0.01em;
+  }
+
+  .svc-btn {
+    margin-top: 4px;
+    padding: 9px 22px;
+    background: transparent;
+    border: 1px solid rgba(124,77,255,0.6);
+    border-radius: 10px;
+    color: #b388ff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s, transform 0.2s;
+  }
+  .svc-btn:hover {
+    background: rgba(124,77,255,0.2);
+    color: #fff;
+    transform: scale(1.04);
+  }
+
+  /* OVERLAY */
+  .overlay-bg {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5,2,15,0.88);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+    animation: fadeBg 0.3s ease;
+  }
+  .overlay-bg.active { display: flex; }
+
+  @keyframes fadeBg {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+
+  .overlay-card {
+    position: relative;
+    width: min(520px, 90vw);
+    border-radius: 24px;
+    overflow: hidden;
+    animation: popModal 0.45s cubic-bezier(0.34,1.46,0.64,1) both;
+    box-shadow: 0 30px 80px rgba(124,77,255,0.4);
+  }
+
+  @keyframes popModal {
+    0%  { opacity: 0; transform: scale(0.78) translateY(24px); }
+    100%{ opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .overlay-img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .overlay-text {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10,5,20,0.25) 0%, rgba(10,5,20,0.85) 55%, rgba(10,5,20,0.97) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px;
+    gap: 8px;
+  }
+
+  .overlay-tag {
+    display: inline-block;
+    width: fit-content;
+    background: rgba(124,77,255,0.75);
+    color: #e8d5ff;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 12px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+  }
+
+  .overlay-title {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+
+  .overlay-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .overlay-list li {
+    color: rgba(220,210,255,0.9);
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .overlay-list li::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #b388ff;
+    flex-shrink: 0;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(10,5,20,0.7);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 10;
+  }
+  .close-btn:hover { background: rgba(124,77,255,0.5); }
+</style>
 <style>
 :root {
     --main: #7c4dff;
@@ -274,64 +491,83 @@ nav h1 {
 </section>
 
 <!-- SERVICES -->
-<section class="services-section">
-    <div class="services-grid">
+<div class="svc-wrap">
 
-        <div class="service-box" data-aos="fade-up">
+  <div class="svc-card">
+    <div class="svc-logo purple">🤝</div>
+    <div class="svc-title">Sponsorship Deals</div>
+    <button class="svc-btn" onclick="openModal('sponsorship')">Details</button>
+  </div>
 
-    <h3 class="service-title">Sponsorship Deals</h3>
+  <div class="svc-card">
+    <div class="svc-logo cyan">🎯</div>
+    <div class="svc-title">Creator Management</div>
+    <button class="svc-btn" onclick="openModal('creator')">Details</button>
+  </div>
 
-    <div class="image-wrapper">
-        <img src="https://i.postimg.cc/nc7yvJyp/blue-book-removebg-preview.png" alt="service image">
+  <div class="svc-card">
+    <div class="svc-logo violet">📡</div>
+    <div class="svc-title">Media Management</div>
+    <button class="svc-btn" onclick="openModal('media')">Details</button>
+  </div>
 
-        <div class="image-overlay">
-            <p>
-1. Brand matching<br>
-2. Deal term negotiation<br>
-3. Long-term collaborations<br>
-4. Performance analysis<br>
-5. Rate optimization</p>
-        </div>
-    </div>
-</div>
-        <div class="service-box" data-aos="fade-up">
-
-    <h3 class="service-title">Creator Management</h3>
-
-    <div class="image-wrapper">
-        <img src="https://i.postimg.cc/nc7yvJyp/blue-book-removebg-preview.png" alt="service image">
-
-        <div class="image-overlay">
-            <p>
-1. Tailored Content Strategies<br>
-2. Brand Positioning and Identity<br>
-3. Engaged Audience Growth<br>
-4. Measurable Analytics<br>
-5. Holistic Brand Support</p>
-        </div>
-    </div>
 </div>
 
-        <div class="service-box" data-aos="fade-up">
-
-    <h3 class="service-title">Media Management</h3>
-
-    <div class="image-wrapper">
-        <img src="https://i.postimg.cc/nc7yvJyp/blue-book-removebg-preview.png" alt="service image">
-
-        <div class="image-overlay">
-            <p>
-1. Content Planning<br>
-2. Social Media Posting<br>
-3. Asset Organization<br>
-4. Multi-Platform Coordination<br>
-5. Engagement Analytics</p>
-        </div>
+<!-- OVERLAYS -->
+<div class="overlay-bg" id="modal-sponsorship" onclick="closeModal(event,'modal-sponsorship')">
+  <div class="overlay-card">
+    <button class="close-btn" onclick="document.getElementById('modal-sponsorship').classList.remove('active')">✕</button>
+    <img class="overlay-img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=80" alt="Sponsorship">
+    <div class="overlay-text">
+      <span class="overlay-tag">Sponsorship</span>
+      <p class="overlay-title">We understand your brand's voice we connect you only with brands that truly align with your identity, so every partnership makes a real impact on your audience.
+</p>
+      <ul class="overlay-list">
+        <li>Brand matching & alignment</li>
+        <li>Deal term negotiation</li>
+        <li>Long-term collaborations</li>
+        <li>Performance analysis</li>
+        <li>Rate optimization</li>
+      </ul>
     </div>
+  </div>
 </div>
 
+<div class="overlay-bg" id="modal-creator" onclick="closeModal(event,'modal-creator')">
+  <div class="overlay-card">
+    <button class="close-btn" onclick="document.getElementById('modal-creator').classList.remove('active')">✕</button>
+    <img class="overlay-img" src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=700&q=80" alt="Creator">
+    <div class="overlay-text">
+      <span class="overlay-tag">Management</span>
+      <p class="overlay-title">We handle the business so you can shine. From strategic content planning to brand growth, we empower you to focus on your craft.</p>
+      <ul class="overlay-list">
+        <li>Tailored content strategies</li>
+        <li>Brand positioning & identity</li>
+        <li>Engaged audience growth</li>
+        <li>Measurable analytics</li>
+        <li>Holistic brand support</li>
+      </ul>
     </div>
-</section>
+  </div>
+</div>
+
+<div class="overlay-bg" id="modal-media" onclick="closeModal(event,'modal-media')">
+  <div class="overlay-card">
+    <button class="close-btn" onclick="document.getElementById('modal-media').classList.remove('active')">✕</button>
+    <img class="overlay-img" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700&q=80" alt="Media">
+    <div class="overlay-text">
+      <span class="overlay-tag">Media</span>
+      <p class="overlay-title">Strengthen your social presence. We handle post scheduling, content organization, and ensure a professional look, so your brand shines on every platform</p>
+      <ul class="overlay-list">
+        <li>Content planning</li>
+        <li>Social media posting</li>
+        <li>Asset organisation</li>
+        <li>Multi-platform coordination</li>
+        <li>Engagement analytics</li>
+      </ul>
+    </div>
+  </div>
+</div>
 <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-brand" data-aos="fade-up">
@@ -405,6 +641,15 @@ const cursor = document.getElementById('cursor');
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
+function openModal(id) {
+  document.getElementById('modal-' + id).classList.add('active');
+}
+function closeModal(e, id) {
+  if (e.target === e.currentTarget) document.getElementById(id).classList.remove('active');
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.querySelectorAll('.overlay-bg.active').forEach(m => m.classList.remove('active'));
+});
 </script>
 
 </body>
