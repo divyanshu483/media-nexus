@@ -6,6 +6,7 @@
 <title>Services | Media Nexus</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sekuya&display=swap" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
@@ -14,7 +15,7 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
     padding: 2rem 0;
     display: flex;
-    gap: 50px;
+    gap: 70px;
     justify-content: center;
     flex-wrap: wrap;
   }
@@ -23,7 +24,7 @@
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 24px;
-    padding: 36px 28px;
+    padding: 55px 28px;
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -33,16 +34,22 @@
     position: relative;
     overflow: hidden;
     animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
-    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), border-color 0.3s, box-shadow 0.3s;
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), border-color 0.3s, box-shadow 1.0s;
   }
 
   .svc-card:nth-child(1) { animation-delay: 0.05s; }
-  .svc-card:nth-child(2) { animation-delay: 0.18s; }
-  .svc-card:nth-child(3) { animation-delay: 0.31s; }
+  .svc-card:nth-child(2) { animation-delay: 0.13s; }
+  .svc-card:nth-child(3) { animation-delay: 0.21s; }
+  .svc-card:nth-child(4) { animation-delay: 0.29s; }
+  .svc-card:nth-child(5) { animation-delay: 0.37s; }
+  .svc-card:nth-child(6) { animation-delay: 0.45s; }
+  .svc-card:nth-child(7) { animation-delay: 0.53s; }
+  .svc-card:nth-child(8) { animation-delay: 0.61s; }
+  .svc-card:nth-child(9) { animation-delay: 0.69s; }
 
   @keyframes popIn {
-    0% { opacity: 0; transform: scale(0.7) translateY(30px); }
-    100% { opacity: 1; transform: scale(1) translateY(0); }
+    0%  { opacity: 0; transform: scale(0.7) translateY(30px); }
+    100%{ opacity: 1; transform: scale(1) translateY(0); }
   }
 
   .svc-card:hover {
@@ -63,37 +70,44 @@
   .svc-card:hover::before { opacity: 1; }
 
   .svc-logo {
-    width: 64px;
-    height: 64px;
-    border-radius: 16px;
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+    font-size: 26px;
     flex-shrink: 0;
   }
 
-  .svc-logo.purple { background: linear-gradient(135deg,#7c4dff,#b388ff); }
-  .svc-logo.cyan   { background: linear-gradient(135deg,#00b4d8,#00e5ff); }
-  .svc-logo.violet { background: linear-gradient(135deg,#9c27b0,#7c4dff); }
+  .g1 { background: linear-gradient(135deg,#7c4dff,#b388ff); }
+  .g2 { background: linear-gradient(135deg,#00b4d8,#00e5ff); }
+  .g3 { background: linear-gradient(135deg,#9c27b0,#7c4dff); }
+  .g4 { background: linear-gradient(135deg,#ff6b6b,#ff8e53); }
+  .g5 { background: linear-gradient(135deg,#11998e,#38ef7d); }
+  .g6 { background: linear-gradient(135deg,#f7971e,#ffd200); }
+  .g7 { background: linear-gradient(135deg,#fc466b,#3f5efb); }
+  .g8 { background: linear-gradient(135deg,#4facfe,#00f2fe); }
+  .g9 { background: linear-gradient(135deg,#43e97b,#38f9d7); }
 
   .svc-title {
     color: #7c4dff;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 700;
     text-align: center;
     letter-spacing: -0.01em;
+    line-height: 1.3;
   }
 
   .svc-btn {
     margin-top: 4px;
-    padding: 9px 22px;
+    padding: 8px 18px;
     background: transparent;
     border: 1px solid rgba(124,77,255,0.6);
     border-radius: 10px;
     color: #b388ff;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.25s, color 0.25s, transform 0.2s;
@@ -114,17 +128,12 @@
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(6px);
-    animation: fadeBg 0.3s ease;
   }
   .overlay-bg.active { display: flex; }
 
-  @keyframes fadeBg {
-    from { opacity: 0; } to { opacity: 1; }
-  }
-
   .overlay-card {
     position: relative;
-    width: min(520px, 90vw);
+    width: min(500px, 90vw);
     border-radius: 24px;
     overflow: hidden;
     animation: popModal 0.45s cubic-bezier(0.34,1.46,0.64,1) both;
@@ -138,7 +147,7 @@
 
   .overlay-img {
     width: 100%;
-    height: 320px;
+    height: 300px;
     object-fit: cover;
     display: block;
   }
@@ -146,11 +155,11 @@
   .overlay-text {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(10,5,20,0.25) 0%, rgba(10,5,20,0.85) 55%, rgba(10,5,20,0.97) 100%);
+    background: linear-gradient(to bottom, rgba(10,5,20,0.2) 0%, rgba(10,5,20,0.82) 50%, rgba(10,5,20,0.97) 100%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 28px;
+    padding: 24px;
     gap: 8px;
   }
 
@@ -159,18 +168,18 @@
     width: fit-content;
     background: rgba(124,77,255,0.75);
     color: #e8d5ff;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    padding: 4px 12px;
+    padding: 3px 10px;
     border-radius: 6px;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
 
   .overlay-title {
     color: #fff;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 800;
     letter-spacing: -0.02em;
     margin: 0;
@@ -182,12 +191,12 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
   }
 
   .overlay-list li {
     color: rgba(220,210,255,0.9);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -197,8 +206,8 @@
   .overlay-list li::before {
     content: '';
     display: inline-block;
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: #b388ff;
     flex-shrink: 0;
@@ -206,16 +215,15 @@
 
   .close-btn {
     position: absolute;
-    top: 14px;
-    right: 14px;
-    width: 34px;
-    height: 34px;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: rgba(10,5,20,0.7);
     border: 1px solid rgba(255,255,255,0.15);
     color: #fff;
-    font-size: 18px;
-    line-height: 1;
+    font-size: 16px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -225,6 +233,7 @@
   }
   .close-btn:hover { background: rgba(124,77,255,0.5); }
 </style>
+
 <style>
 :root {
     --main: #7c4dff;
@@ -239,7 +248,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Sekuya', sans-serif;
 }
 
 body {
@@ -491,83 +500,143 @@ nav h1 {
 </section>
 
 <!-- SERVICES -->
-<div class="svc-wrap">
 
-  <div class="svc-card">
-    <div class="svc-logo purple">🤝</div>
-    <div class="svc-title">Sponsorship Deals</div>
-    <button class="svc-btn" onclick="openModal('sponsorship')">Details</button>
-  </div>
-
-  <div class="svc-card">
-    <div class="svc-logo cyan">🎯</div>
-    <div class="svc-title">Creator Management</div>
-    <button class="svc-btn" onclick="openModal('creator')">Details</button>
-  </div>
-
-  <div class="svc-card">
-    <div class="svc-logo violet">📡</div>
-    <div class="svc-title">Media Management</div>
-    <button class="svc-btn" onclick="openModal('media')">Details</button>
-  </div>
-
-</div>
 
 <!-- OVERLAYS -->
-<div class="overlay-bg" id="modal-sponsorship" onclick="closeModal(event,'modal-sponsorship')">
-  <div class="overlay-card">
-    <button class="close-btn" onclick="document.getElementById('modal-sponsorship').classList.remove('active')">✕</button>
-    <img class="overlay-img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=80" alt="Sponsorship">
-    <div class="overlay-text">
-      <span class="overlay-tag">Sponsorship</span>
-      <p class="overlay-title">We understand your brand's voice we connect you only with brands that truly align with your identity, so every partnership makes a real impact on your audience.
-</p>
-      <ul class="overlay-list">
-        <li>Brand matching & alignment</li>
-        <li>Deal term negotiation</li>
-        <li>Long-term collaborations</li>
-        <li>Performance analysis</li>
-        <li>Rate optimization</li>
-      </ul>
-    </div>
-  </div>
+<div class="svc-wrap">
+  <div class="svc-card"><div class="svc-logo g1">🤝</div><div class="svc-title">Sponsorship Deals</div><button class="svc-btn" onclick="openModal('s1')">Details</button></div>
+  <div class="svc-card"><div class="svc-logo g2">🎯</div><div class="svc-title">Creator Management</div><button class="svc-btn" onclick="openModal('s2')">Details</button></div>
+  <div class="svc-card"><div class="svc-logo g3">📡</div><div class="svc-title">Media Management</div><button class="svc-btn" onclick="openModal('s3')">Details</button></div>
+  <div class="svc-card"><div class="svc-logo g4">🚀</div><div class="svc-title">Video Creation</div><button class="svc-btn" onclick="openModal('s4')">Details</button></div>
+  <div class="svc-card"><div class="svc-logo g5">💡</div><div class="svc-title">Script Writing</div><button class="svc-btn" onclick="openModal('s5')">Details</button></div>
+  <div class="svc-card"><div class="svc-logo g6">⚡</div><div class="svc-title">Graphic Design</div><button class="svc-btn" onclick="openModal('s6')">Details</button></div>
+  <div class="svc-card"><div class="svc-logo g7">🎨</div><div class="svc-title">Web Development</div><button class="svc-btn" onclick="openModal('s7')">Details</button></div>
+  <div class="svc-card"><div class="svc-logo g8">📊</div><div class="svc-title">Minecraft Development</div><button class="svc-btn" onclick="openModal('s8')">Details</button></div>
+  <div class="svc-card"><div class="svc-logo g9">🌐</div><div class="svc-title">Event Management</div><button class="svc-btn" onclick="openModal('s9')">Details</button></div>
 </div>
 
-<div class="overlay-bg" id="modal-creator" onclick="closeModal(event,'modal-creator')">
-  <div class="overlay-card">
-    <button class="close-btn" onclick="document.getElementById('modal-creator').classList.remove('active')">✕</button>
-    <img class="overlay-img" src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=700&q=80" alt="Creator">
-    <div class="overlay-text">
-      <span class="overlay-tag">Management</span>
-      <p class="overlay-title">We handle the business so you can shine. From strategic content planning to brand growth, we empower you to focus on your craft.</p>
-      <ul class="overlay-list">
-        <li>Tailored content strategies</li>
-        <li>Brand positioning & identity</li>
-        <li>Engaged audience growth</li>
-        <li>Measurable analytics</li>
-        <li>Holistic brand support</li>
-      </ul>
-    </div>
-  </div>
-</div>
+<!-- MODALS -->
+<div class="overlay-bg" id="modal-s1" onclick="closeModal(event,'modal-s1')">
+<div class="overlay-card">
+<button class="close-btn" onclick="document.getElementById('modal-s1').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=80" alt="">
+<div class="overlay-text">
+<span class="overlay-tag">Sponsorship</span>
+<p class="overlay-title">Sponsorship Deals</p>
+<ul class="overlay-list">
+<li>Brand matching & alignment</li>
+<li>Deal term negotiation</li>
+<li>Long-term collaborations</li>
+<li>Performance analysis</li>
+<li>Rate optimization</li>
+</ul>
+</div></div></div>
 
-<div class="overlay-bg" id="modal-media" onclick="closeModal(event,'modal-media')">
-  <div class="overlay-card">
-    <button class="close-btn" onclick="document.getElementById('modal-media').classList.remove('active')">✕</button>
-    <img class="overlay-img" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700&q=80" alt="Media">
-    <div class="overlay-text">
-      <span class="overlay-tag">Media</span>
-      <p class="overlay-title">Strengthen your social presence. We handle post scheduling, content organization, and ensure a professional look, so your brand shines on every platform</p>
-      <ul class="overlay-list">
-        <li>Content planning</li>
-        <li>Social media posting</li>
-        <li>Asset organisation</li>
-        <li>Multi-platform coordination</li>
-        <li>Engagement analytics</li>
-      </ul>
-    </div>
-  </div>
-</div>
+<div class="overlay-bg" id="modal-s2" onclick="closeModal(event,'modal-s2')">
+<div class="overlay-card">
+<button class="close-btn" onclick="document.getElementById('modal-s2').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=700&q=80" alt="">
+<div class="overlay-text">
+<span class="overlay-tag">Management</span>
+<p class="overlay-title">Creator Management</p>
+<ul class="overlay-list">
+<li>Tailored content strategies</li>
+<li>Brand positioning & identity</li>
+<li>Engaged audience growth</li>
+<li>Measurable analytics</li>
+<li>Holistic brand support</li>
+</ul>
+</div></div></div>
+
+<div class="overlay-bg" id="modal-s3" onclick="closeModal(event,'modal-s3')"><div class="overlay-card"><button class="close-btn" onclick="document.getElementById('modal-s3').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700&q=80" alt=""><div class="overlay-text"><span class="overlay-tag">Media</span><p class="overlay-title">Media Management</p><ul class="overlay-list"><li>Content planning</li><li>Social media posting</li><li>Asset organisation</li><li>Multi-platform coordination</li><li>Engagement analytics</li></ul></div></div></div>
+
+<div class="overlay-bg" id="modal-s4" onclick="closeModal(event,'modal-s4')">
+<div class="overlay-card">
+<button class="close-btn" onclick="document.getElementById('modal-s4').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80" alt="">
+<div class="overlay-text">
+<span class="overlay-tag">Video</span>
+<p class="overlay-title">Video Creation</p>
+<ul class="overlay-list">
+<li>Creative Storytelling</li>
+<li>Seamless Editing</li>
+<li>Visual Effects</li>
+<li>Sound Design</li>
+<li>Rapid Delivery</li>
+</ul>
+</div></div></div>
+
+<div class="overlay-bg" id="modal-s5" onclick="closeModal(event,'modal-s5')">
+<div class="overlay-card">
+<button class="close-btn" onclick="document.getElementById('modal-s5').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=700&q=80" alt="">
+<div class="overlay-text">
+<span class="overlay-tag">Script</span>
+<p class="overlay-title">Script Writing</p>
+<ul class="overlay-list">
+<li>Story Development</li>
+<li>Persuasive Messaging</li>
+<li>Scene Structuring</li>
+<li>Dialogue Writing</li>
+<li>Tailored for Your Audience</li>
+</ul>'</div></div></div>
+
+<div class="overlay-bg" id="modal-s6" onclick="closeModal(event,'modal-s6')">
+<div class="overlay-card">
+<button class="close-btn" onclick="document.getElementById('modal-s6').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=700&q=80" alt="">
+<div class="overlay-text">
+<span class="overlay-tag">Graphic</span>
+<p class="overlay-title">Graphic Design</p>
+<ul class="overlay-list">
+<li>Custom Logos and Branding</li>
+<li>Stream Overlays</li>
+<li>YouTube Thumbnails</li>
+<li>Social Media Graphics</li>
+<li>Infographic Design</li>
+</ul>
+</div></div></div>
+
+<div class="overlay-bg" id="modal-s7" onclick="closeModal(event,'modal-s7')">
+<div class="overlay-card">
+<button class="close-btn" onclick="document.getElementById('modal-s7').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=700&q=80" alt="">
+<div class="overlay-text">
+<span class="overlay-tag">Website</span>
+<p class="overlay-title">Web Development</p>
+<ul class="overlay-list">
+<li>Bespoke Websites</li>
+<li>Discord Bot Solutions</li>
+<li>API Integration</li>
+<li>Seamless Responsiveness</li>
+<li>Reliable Hosting & Support</li>
+</ul>
+</div></div></div>
+
+<div class="overlay-bg" id="modal-s8" onclick="closeModal(event,'modal-s8')">
+<div class="overlay-card">
+<button class="close-btn" onclick="document.getElementById('modal-s8').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=80" alt="">
+<div class="overlay-text">
+<span class="overlay-tag">Minecraft</span>
+<p class="overlay-title">Minecraft Development</p>
+<ul class="overlay-list">
+<li>Custom Plugins</li>
+<li>Server Development</li>
+<li>Redstone Creations</li>
+<li>Adventure Maps</li>
+<li>Performance Optimization</li>
+</ul>
+</div></div></div>
+
+<div class="overlay-bg" id="modal-s9" onclick="closeModal(event,'modal-s9')">
+<div class="overlay-card">
+<button class="close-btn" onclick="document.getElementById('modal-s9').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=700&q=80" alt="">
+<div class="overlay-text">
+<span class="overlay-tag">Event</span>
+<p class="overlay-title">Event Management</p>
+<ul class="overlay-list">
+<li>Event Concept Design</li>
+<li>Venue Coordination</li>
+<li>Vendor Management</li>
+<li>Guest Experience</li>
+<li>Flawless Execution</li>
+</ul>
+</div></div></div>
+
 <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-brand" data-aos="fade-up">
