@@ -5,22 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Careers | Media Nexus</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 /* ─── RESET & TOKENS ─────────────────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg:         #07070c;
-  --surface:    #0f0f18;
-  --card:       #111120;
-  --border:     rgba(255,255,255,0.07);
+  --main:       #7c4dff;
+  --main-glow:  rgba(124, 77, 255, 0.4);
+  --bg:         #0a0514;
+  --card:       rgba(255, 255, 255, 0.03);
+  --border:     rgba(255, 255, 255, 0.08);
+  --text-muted: #a0a0a0;
+  /* jobs-specific extras */
   --border-h:   rgba(124,77,255,0.45);
   --purple:     #7c4dff;
   --purple-dim: rgba(124,77,255,0.15);
-  --purple-glow:rgba(124,77,255,0.35);
   --green:      #22c55e;
   --green-dim:  rgba(34,197,94,0.12);
   --green-b:    rgba(34,197,94,0.3);
@@ -33,8 +37,8 @@ html { scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
-  color: var(--text);
-  font-family: 'DM Sans', sans-serif;
+  color: white;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -42,114 +46,100 @@ body {
 /* ─── CURSOR GLOW ────────────────────────────────────────────── */
 .cursor-glow {
   position: fixed;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(124,77,255,0.06) 0%, transparent 70%);
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, var(--main-glow) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
   transform: translate(-50%, -50%);
-  transition: left 0.08s, top 0.08s;
+  transition: width 0.3s, height 0.3s;
 }
 
-/* ─── NAVBAR ─────────────────────────────────────────────────── */
+/* ─── NAVBAR — exact copy from index.html ────────────────────── */
 nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
   position: fixed;
-  top: 0; left: 0; right: 0;
+  width: 100%;
   z-index: 1000;
-  height: var(--nav-h);
-  background: rgba(7, 7, 12, 0.85);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(10, 5, 20, 0.8);
+  backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
 }
 
-.nav-inner {
+.nav-container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  height: 100%;
-  max-width: 1300px;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2.5rem;
-  gap: 2rem;
+  padding: 0 8%;
 }
 
-.nav-logo {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.35rem;
+nav h1 {
   font-weight: 800;
-  background: linear-gradient(90deg, #fff 30%, var(--purple));
+  font-size: 1.5rem;
+  letter-spacing: -1px;
+  background: linear-gradient(to right, #fff, var(--main));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-decoration: none;
-  white-space: nowrap;
-  flex-shrink: 0;
 }
 
-.nav-links {
+nav ul {
   display: flex;
   list-style: none;
-  gap: 0.25rem;
+  gap: 25px;
 }
 
-.nav-links a {
-  display: block;
-  padding: 0.45rem 0.9rem;
-  color: rgba(255,255,255,0.6);
-  text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 500;
-  border-radius: 8px;
-  transition: color 0.2s, background 0.2s;
-}
-.nav-links a:hover,
-.nav-links a.active {
+nav ul li { position: relative; }
+
+nav ul li a {
   color: #fff;
-  background: rgba(255,255,255,0.06);
-}
-.nav-links a.active { color: var(--purple); }
-
-.nav-discord {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1.1rem;
-  background: #fff;
-  color: #000;
-  font-family: 'Syne', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  border-radius: 10px;
   text-decoration: none;
-  white-space: nowrap;
-  flex-shrink: 0;
-  transition: background 0.2s, transform 0.15s;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  padding: 8px 0;
+  display: inline-block;
 }
-.nav-discord:hover { background: #e8e8ff; transform: translateY(-1px); }
 
-/* Hamburger */
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  padding: 4px;
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--main);
+  transition: width 0.3s ease;
 }
-.nav-toggle span {
-  display: block;
-  width: 22px; height: 2px;
+
+nav ul li a:hover { opacity: 1; color: var(--main); }
+nav ul li a:hover::after { width: 100%; }
+nav ul li a.active { opacity: 1; color: var(--main); }
+nav ul li a.active::after { width: 100%; }
+
+.nav-btn {
   background: #fff;
-  border-radius: 2px;
-  transition: 0.3s;
+  padding: 10px 22px;
+  border-radius: 10px;
+  color: #000;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+.nav-btn:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(255,255,255,0.15); }
 
 /* ─── HERO ───────────────────────────────────────────────────── */
 .hero {
-  padding: calc(var(--nav-h) + 5rem) 2.5rem 4rem;
+  padding: 160px 8% 80px;
   text-align: center;
-  background:
-    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(124,77,255,0.18) 0%, transparent 70%),
-    var(--bg);
+  background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(124,77,255,0.18) 0%, transparent 70%),
+              radial-gradient(circle at 50% 50%, #1a0b35 0%, var(--bg) 100%);
   position: relative;
   z-index: 1;
 }
@@ -160,19 +150,18 @@ nav {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--purple);
-  background: var(--purple-dim);
-  border: 1px solid rgba(124,77,255,0.3);
-  padding: 0.3rem 0.9rem;
-  border-radius: 999px;
+  color: var(--main);
+  background: rgba(124, 77, 255, 0.1);
+  border: 1px solid var(--main);
+  padding: 8px 20px;
+  border-radius: 100px;
   margin-bottom: 1.25rem;
 }
 
 .hero h1 {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.1;
   letter-spacing: -0.03em;
   margin-bottom: 1rem;
 }
@@ -184,8 +173,8 @@ nav {
 }
 
 .hero p {
-  color: var(--muted);
-  font-size: 1rem;
+  color: var(--text-muted);
+  font-size: 1.1rem;
   max-width: 520px;
   margin: 0 auto;
 }
@@ -253,9 +242,10 @@ nav {
   transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 .card:hover {
-  border-color: var(--border-h);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(124,77,255,0.12);
+  background: rgba(124, 77, 255, 0.05);
+  border-color: var(--main);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px var(--main-glow);
 }
 
 @keyframes fadeUp {
@@ -440,126 +430,105 @@ nav {
   font-size: 0.88rem;
 }
 
-/* ─── FOOTER ─────────────────────────────────────────────────── */
-footer {
+/* ─── FOOTER — exact copy from index.html ────────────────────── */
+.main-footer {
   background: #05020a;
+  padding: 80px 8% 40px 8%;
   border-top: 1px solid var(--border);
-  padding: 5rem 2.5rem 2.5rem;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
-.footer-inner {
+.footer-container {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
-  gap: 3rem;
-  max-width: 1300px;
-  margin: 0 auto 3rem;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 50px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.footer-brand h2 {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 800;
-  background: linear-gradient(90deg, #fff, var(--purple));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 0.3rem;
-}
-.footer-brand .sub {
-  font-size: 0.7rem;
+.brand-tagline {
+  font-size: 12px;
+  color: var(--main);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--purple);
+  letter-spacing: 1px;
   font-weight: 600;
-  margin-bottom: 1rem;
-}
-.footer-brand p {
-  font-size: 0.85rem;
-  color: var(--muted);
-  max-width: 260px;
-  line-height: 1.65;
-  margin-bottom: 1.25rem;
-}
-.social-links { display: flex; gap: 0.75rem; }
-.social-links a {
-  width: 34px; height: 34px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--border);
-  color: rgba(255,255,255,0.55);
-  font-size: 0.85rem;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
-}
-.social-links a:hover {
-  background: var(--purple-dim);
-  color: #fff;
-  border-color: var(--border-h);
 }
 
-.footer-col h4 {
-  font-family: 'Syne', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 700;
+.brand-desc {
+  color: var(--text-muted);
+  margin-top: 20px;
+  font-size: 14px;
+  max-width: 300px;
+  line-height: 1.6;
+}
+
+.footer-links h4 {
+  color: var(--main);
+  font-size: 14px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--purple);
-  margin-bottom: 1.25rem;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
 }
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
-.footer-col ul li a {
-  font-size: 0.875rem;
-  color: rgba(255,255,255,0.55);
+
+.footer-links ul { list-style: none; }
+.footer-links ul li { margin-bottom: 12px; }
+.footer-links ul li a {
   text-decoration: none;
-  transition: color 0.2s, padding-left 0.2s;
+  color: #fff;
+  font-size: 14px;
+  opacity: 0.7;
+  transition: 0.3s ease;
 }
-.footer-col ul li a:hover { color: #fff; padding-left: 4px; }
+.footer-links ul li a:hover { opacity: 1; color: var(--main); padding-left: 5px; }
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.social-links {
+  margin-top: 25px;
+  display: flex;
+  gap: 15px;
+}
+.social-links a {
+  color: #fff;
+  font-size: 18px;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+.social-links a:hover { opacity: 1; color: var(--main); transform: translateY(-3px); }
 
 .footer-bottom {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding-top: 2rem;
+  margin-top: 80px;
+  padding-top: 30px;
   border-top: 1px solid rgba(255,255,255,0.05);
   text-align: center;
-  font-size: 0.82rem;
-  color: var(--muted);
 }
-.footer-bottom span { color: var(--purple); font-weight: 600; }
+
+.highlight-text { color: var(--main); font-weight: 600; }
+.founded-text { font-size: 12px; color: #555; margin-top: 10px; }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────────── */
-@media (max-width: 768px) {
-  .nav-links, .nav-discord { display: none; }
-  .nav-toggle { display: flex; }
-
-  .nav-links.open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: var(--nav-h);
-    left: 0; right: 0;
-    background: rgba(7,7,12,0.97);
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 1.5rem;
-    gap: 0.25rem;
-  }
-  .nav-links.open + .nav-discord {
-    display: none;
-  }
-
-  .card { flex-direction: column; }
-  .btn-view { align-self: stretch; text-align: center; }
-
-  .open-app { flex-direction: column; }
-  .btn-resume { align-self: stretch; align-items: center; }
-
-  .footer-inner { grid-template-columns: 1fr 1fr; }
+@media (max-width: 1100px) {
+  nav ul { display: none; }
+  .footer-container { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 480px) {
-  .footer-inner { grid-template-columns: 1fr; }
-  .hero { padding: calc(var(--nav-h) + 3rem) 1.25rem 3rem; }
+@media (max-width: 768px) {
+  .card { flex-direction: column; }
+  .btn-view { align-self: stretch; text-align: center; }
+  .open-app { flex-direction: column; }
+  .btn-resume { align-self: stretch; align-items: center; }
+}
+
+@media (max-width: 600px) {
+  .footer-container { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -569,23 +538,20 @@ footer {
 
 <!-- ── NAVBAR ─────────────────────────────────────────────────── -->
 <nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Media Nexus</a>
+  <div class="nav-container">
+    <h1 data-aos="fade-right">Media Nexus</h1>
 
-    <ul class="nav-links" id="navLinks">
+    <ul data-aos="fade-down">
       <li><a href="index.html">Dashboard</a></li>
-      <li><a href="index.html#services">Services</a></li>
+      <li><a href="services.html">Services</a></li>
       <li><a href="talent.html">Our Talent</a></li>
-      <li><a href="jobs.html" class="active">Careers</a></li>
+      <li><a href="creators.html">For Creators</a></li>
+      <li><a href="jobs.html" class="active">Jobs</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
 
-    <a href="https://discord.gg/TxCWBEQnJYk" class="nav-discord" target="_blank" rel="noopener">
-      <i class="fab fa-discord"></i> Discord
-    </a>
-
-    <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
-      <span></span><span></span><span></span>
+    <div data-aos="fade-left">
+      <a href="https://discord.gg/TxCWBEQnJYk" class="nav-btn">Get in Touch</a>
     </div>
   </div>
 </nav>
@@ -876,42 +842,53 @@ footer {
 
 </div><!-- /page-body -->
 
-<!-- ── FOOTER ─────────────────────────────────────────────────── -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <h2>Media Nexus</h2>
-      <p class="sub">Creator Partnerships</p>
-      <p>Connecting creators with brands to build meaningful partnerships that drive real growth.</p>
+<footer class="main-footer">
+  <div class="footer-container">
+    <div class="footer-brand" data-aos="fade-up">
+      <div class="brand-logo">
+        <h1 style="margin:0; font-weight:800; font-size:1.5rem; background:linear-gradient(to right,#fff,var(--main)); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Media Nexus</h1>
+        <p class="brand-tagline">Creator Partnerships</p>
+      </div>
+      <p class="brand-desc">Connecting creators with brands to build meaningful partnerships that drive growth and engagement.</p>
       <div class="social-links">
-        <a href="#" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
-        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://discord.gg/TxCWBEQnJYk" title="Discord" target="_blank" rel="noopener"><i class="fab fa-discord"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="https://discord.gg/TxCWBEQnJYk"><i class="fab fa-discord"></i></a>
       </div>
     </div>
 
-    <div class="footer-col">
+    <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
       <h4>Company</h4>
       <ul>
         <li><a href="#">About Us</a></li>
-        <li><a href="index.html#services">Our Services</a></li>
-        <li><a href="talent.html">Our Talent</a></li>
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="talent.html">Our Talents</a></li>
         <li><a href="jobs.html">Careers</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </div>
 
-    <div class="footer-col">
+    <div class="footer-links" data-aos="fade-up" data-aos-delay="200">
       <h4>For Creators</h4>
       <ul>
         <li><a href="#">How It Works</a></li>
-        <li><a href="#">Creator FAQ</a></li>
+        <li><a href="creators.html">Creator FAQ</a></li>
+        <li><a href="#">General FAQ</a></li>
         <li><a href="#">Apply Now</a></li>
       </ul>
     </div>
 
-    <div class="footer-col">
-      <h4>Legal</h4>
+    <div class="footer-links" data-aos="fade-up" data-aos-delay="300">
+      <h4>Get in Touch</h4>
+      <div class="contact-item">
+        <span style="color:var(--main);">✉</span>
+        <p>contact@medianexus.com</p>
+      </div>
+      <div class="contact-item">
+        <span style="color:var(--main);">📍</span>
+        <p>Global Agency</p>
+      </div>
+      <h4 style="margin-top:20px;">Legal</h4>
       <ul>
         <li><a href="#">Privacy Policy</a></li>
         <li><a href="#">Terms of Service</a></li>
@@ -920,22 +897,21 @@ footer {
   </div>
 
   <div class="footer-bottom">
-    <p>© 2026 <span>Media Nexus</span>. All rights reserved.</p>
+    <p>© 2026 <span class="highlight-text">Media Nexus</span>. All rights reserved.</p>
+    <p class="founded-text">Founded January 16, 2024 · Empowering creators and brands to build authentic partnerships</p>
   </div>
 </footer>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
+AOS.init({ duration: 1000, once: true, offset: 100 });
+
 /* Cursor glow */
 const cursor = document.getElementById('cursor');
 document.addEventListener('mousemove', e => {
   cursor.style.left = e.clientX + 'px';
   cursor.style.top  = e.clientY + 'px';
 });
-
-/* Mobile nav */
-function toggleNav() {
-  document.getElementById('navLinks').classList.toggle('open');
-}
 
 /* Search filter */
 function filterCards() {
@@ -955,4 +931,3 @@ function filterCards() {
 </script>
 </body>
 </html>
-
