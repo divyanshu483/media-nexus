@@ -248,7 +248,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Sekuya', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 body {
@@ -259,25 +259,94 @@ body {
 
 /* NAV */
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 8%;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    background: rgba(10, 5, 20, 0.8);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-}
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(10, 5, 20, 0.8);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+    }
 
-nav h1 {
-    font-weight: 800;
-    font-size: 1.5rem;
-    background: linear-gradient(to right, #fff, var(--main));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 8%;
+    }
+
+    nav h1 {
+        font-weight: 800;
+        font-size: 1.5rem;
+        letter-spacing: -1px;
+        background: linear-gradient(to right, #fff, var(--main));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    nav ul { 
+        display: flex; 
+        list-style: none; 
+        gap: 25px; 
+    }
+
+    nav ul li {
+        position: relative;
+    }
+
+    nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        opacity: 0.7;
+        transition: all 0.3s ease;
+        padding: 8px 0;
+        display: inline-block;
+    }
+
+    /* Premium Underline Animation */
+    nav ul li a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: var(--main);
+        transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover { 
+        opacity: 1; 
+        color: var(--main); 
+    }
+
+    nav ul li a:hover::after {
+        width: 100%;
+    }
+
+    .nav-btn {
+        background: #fff;
+        padding: 10px 22px;
+        border-radius: 10px;
+        color: #000;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 13px;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .nav-btn:hover { 
+        transform: scale(1.05); 
+        box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15); 
+    }
 
 /* HERO */
 .services-hero {
@@ -480,14 +549,20 @@ nav h1 {
 <div class="cursor-glow" id="cursor"></div>
 <nav>
         <div class="nav-container">
-            <h1>Media Nexus</h1>
-            <ul>
+            <h1 data-aos="fade-right">Media Nexus</h1>
+            
+            <ul data-aos="fade-down">
                 <li><a href="index.html">Dashboard</a></li>
-                <li><a href="index.html#services">Services</a></li>
+                <li><a href="services.html">Services</a></li>
                 <li><a href="talent.html">Our Talent</a></li>
-                <li><a href="contact.html" style="color: var(--main); opacity: 1;">Contact</a></li>
+                <li><a href="creators.html">For Creators</a></li>
+                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
-            <a href="https://discord.gg/TxCWBEQnJYk" class="nav-btn" style="background:#fff; padding:10px 20px; border-radius:10px; color:#000; text-decoration:none; font-weight:700;">Discord</a>
+
+            <div data-aos="fade-left">
+                <a href="https://discord.gg/TxCWBEQnJYk" class="nav-btn">Get in Touch</a>
+            </div>
         </div>
     </nav>
 
