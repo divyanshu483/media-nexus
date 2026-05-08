@@ -6,36 +6,44 @@
 <title>Services | Media Nexus</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Sekuya&display=swap" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
 
   .svc-wrap {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    padding: 2rem 0;
-    display: flex;
-    gap: 70px;
-    justify-content: center;
-    flex-wrap: wrap;
+    padding: 2rem 5%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 900px) {
+    .svc-wrap { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .svc-wrap { grid-template-columns: 1fr; }
   }
 
   .svc-card {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 24px;
-    padding: 100px 28px;
-    width: 500px;
+    padding: 40px 28px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 16px;
     cursor: pointer;
     position: relative;
     overflow: hidden;
     animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
-    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), border-color 0.3s, box-shadow 1.0s;
-    
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), border-color 0.3s, box-shadow 0.3s;
   }
 
   .svc-card:nth-child(1) { animation-delay: 0.05s; }
@@ -54,7 +62,7 @@
   }
 
   .svc-card:hover {
-    transform: scale(10.5) translateY(50px);
+    transform: translateY(-8px) scale(1.03);
     border-color: #7c4dff;
     box-shadow: 0 20px 40px rgba(124,77,255,0.35);
   }
@@ -71,13 +79,13 @@
   .svc-card:hover::before { opacity: 1; }
 
   .svc-logo {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 39px;
+    font-size: 40px;
     flex-shrink: 0;
   }
 
@@ -93,7 +101,7 @@
 
   .svc-title {
     color: #ffffff;
-    font-size: 29px;
+    font-size: 22px;
     font-weight: 700;
     text-align: center;
     letter-spacing: -0.01em;
@@ -102,7 +110,7 @@
 
   .svc-btn {
     margin-top: 4px;
-    padding: 16px 40px;
+    padding: 14px 36px;
     background: transparent;
     border: 1px solid rgba(124,77,255,0.6);
     border-radius: 10px;
@@ -134,7 +142,7 @@
 
   .overlay-card {
     position: relative;
-    width: min(700px, 110vw);
+    width: min(900px, 92vw);
     border-radius: 24px;
     overflow: hidden;
     animation: popModal 0.45s cubic-bezier(0.34,1.46,0.64,1) both;
@@ -148,7 +156,7 @@
 
   .overlay-img {
     width: 100%;
-    height: 400px;
+    height: 540px;
     object-fit: cover;
     display: block;
   }
@@ -160,8 +168,8 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 35px;
-    gap: 8px;
+    padding: 40px;
+    gap: 10px;
   }
 
   .overlay-tag {
@@ -169,18 +177,18 @@
     width: fit-content;
     background: rgba(124,77,255,0.75);
     color: #e8d5ff;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    padding: 3px 10px;
+    padding: 4px 12px;
     border-radius: 6px;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
   }
 
   .overlay-title {
     color: #fff;
-    font-size: 20px;
+    font-size: 26px;
     font-weight: 800;
     letter-spacing: -0.02em;
     margin: 0;
@@ -192,12 +200,12 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 7px;
   }
 
   .overlay-list li {
     color: rgba(220,210,255,0.9);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -207,8 +215,8 @@
   .overlay-list li::before {
     content: '';
     display: inline-block;
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background: #b388ff;
     flex-shrink: 0;
@@ -216,10 +224,10 @@
 
   .close-btn {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 32px;
-    height: 32px;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background: rgba(10,5,20,0.7);
     border: 1px solid rgba(255,255,255,0.15);
@@ -260,94 +268,93 @@ body {
 
 /* NAV */
 nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 0;
-        position: fixed;
-        width: 100%;
-        z-index: 1000;
-        background: rgba(10, 5, 20, 0.8);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--border);
-    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(10, 5, 20, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+}
 
-    .nav-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 8%;
-    }
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 8%;
+}
 
-    nav h1 {
-        font-weight: 800;
-        font-size: 1.5rem;
-        letter-spacing: -1px;
-        background: linear-gradient(to right, #fff, var(--main));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
+nav h1 {
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -1px;
+    background: linear-gradient(to right, #fff, var(--main));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-    nav ul { 
-        display: flex; 
-        list-style: none; 
-        gap: 25px; 
-    }
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
 
-    nav ul li {
-        position: relative;
-    }
+nav ul li {
+    position: relative;
+}
 
-    nav ul li a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 500;
-        opacity: 0.7;
-        transition: all 0.3s ease;
-        padding: 8px 0;
-        display: inline-block;
-    }
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    padding: 8px 0;
+    display: inline-block;
+}
 
-    /* Premium Underline Animation */
-    nav ul li a::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0%;
-        height: 2px;
-        background: var(--main);
-        transition: width 0.3s ease;
-    }
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--main);
+    transition: width 0.3s ease;
+}
 
-    nav ul li a:hover { 
-        opacity: 1; 
-        color: var(--main); 
-    }
+nav ul li a:hover {
+    opacity: 1;
+    color: var(--main);
+}
 
-    nav ul li a:hover::after {
-        width: 100%;
-    }
+nav ul li a:hover::after {
+    width: 100%;
+}
 
-    .nav-btn {
-        background: #fff;
-        padding: 10px 22px;
-        border-radius: 10px;
-        color: #000;
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 13px;
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
+.nav-btn {
+    background: #fff;
+    padding: 10px 22px;
+    border-radius: 10px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
-    .nav-btn:hover { 
-        transform: scale(1.05); 
-        box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15); 
-    }
+.nav-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+}
 
 /* HERO */
 .services-hero {
@@ -373,199 +380,97 @@ nav {
     margin: 0 auto;
 }
 
-/* SECTION */
-.services-section {
-    padding: 80px 8%;
-    max-width: 1400px;
-    margin: auto;
+.cursor-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--main-glow) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
 }
 
-/* GRID */
-.services-grid {
+/* FOOTER */
+.main-footer {
+    background: #05020a;
+    padding: 80px 8% 40px 8%;
+    border-top: 1px solid var(--border);
+}
+
+.footer-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-/* CENTER TITLE */
-.service-title {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 50px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-/* FULL IMAGE */
-.service-img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 15px;
-    margin-bottom: 20px;
-}
-
-/* TEXT */
-.service-desc {
+.footer-links h4 {
+    color: var(--main);
     font-size: 14px;
-    color: var(--text-muted);
-    margin-bottom: 20px;
-    text-align: center;
-}
-/* CARD */
-.service-box {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 40px 30px;
-    border-radius: 25px;
-    transition: 0.4s;
+    margin-bottom: 25px;
+    text-transform: uppercase;
 }
 
-.service-box:hover {
-    transform: translateY(-10px);
-    border-color: var(--main);
-    background: rgba(124, 77, 255, 0.05);
-    box-shadow: 0 20px 40px var(--main-glow);
-}
-
-/* IMAGE */
-/* small icon (if you ever use icons again) */
-.service-box .icon {
-    width: 55px;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 10px var(--main-glow));
-}
-
-/* FULL IMAGE (your new layout) */
-.service-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 15px;
-    margin-bottom: 200px;
-    box-shadow: 0 10px 25px var(--main-glow);
-}
-
-.service-box h3 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-}
-
-.service-box p {
-    font-size: 14px;
-    color: var(--text-muted);
-    margin-bottom: 20px;
-}
-
-/* LIST */
-.service-box ul {
+.footer-links ul {
     list-style: none;
 }
 
-.service-box ul li {
-    margin-bottom: 10px;
-    font-size: 14px;
+.footer-links ul li {
+    margin-bottom: 12px;
 }
 
-/* RESPONSIVE */
-@media(max-width: 900px) {
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-}
-.cursor-glow { position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, var(--main-glow) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 0; transform: translate(-50%, -50%); }
-/* IMAGE WRAPPER */
-.image-wrapper {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    border-radius: 15px;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-
-/* IMAGE */
-.image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* OVERLAY */
-.image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 79px 44px;
-
-    /* keep purple tint ONLY in background */
-    background: linear-gradient(to bottom, rgba(124,77,255,0.7), rgba(124,77,255,0.2));
-
-    /* IMPORTANT */
-    color: #ffffff;
-}
-.image-overlay,
-.image-overlay p,
-.image-overlay li {
-    color: #ffffff !important;
-    opacity: 1;
-}
-.image-overlay p,
-.image-overlay li {
-    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-}
-.image-overlay p {
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 1.4;
-    margin: 0;
-
-    /* glow for readability */
-    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-}
-/* TEXT */
-.image-overlay p {
+.footer-links ul li a {
+    text-decoration: none;
     color: #fff;
+    opacity: 0.7;
+    transition: 0.3s;
     font-size: 14px;
-    margin: 0;
-}
-.image-wrapper img {
-    transition: 0.4s;
 }
 
-.image-wrapper:hover img {
-    transform: scale(1.1);
+.footer-links ul li a:hover {
+    opacity: 1;
+    color: var(--main);
+    padding-left: 5px;
 }
 
-.image-overlay {
-    transition: 0.4s;
+.footer-bottom {
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
 }
 
-.image-wrapper:hover .image-overlay {
-    background: linear-gradient(to top, rgba(124,77,255,0.8), transparent);
+@media(max-width: 992px) {
+    .footer-container { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width: 600px) {
+    .footer-container { grid-template-columns: 1fr; }
+    nav ul { display: none; }
 }
 </style>
 </head>
 
 <body>
 <div class="cursor-glow" id="cursor"></div>
-<nav>
-        <div class="nav-container">
-            <h1 data-aos="fade-right">Media Nexus</h1>
-            
-            <ul data-aos="fade-down">
-                <li><a href="index.html">Dashboard</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="talent.html">Our Talent</a></li>
-                <li><a href="creators.html">For Creators</a></li>
-                <li><a href="jobs.html">Jobs</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
 
-            <div data-aos="fade-left">
-                <a href="https://discord.gg/TxCWBEQnJYk" class="nav-btn">Get in Touch</a>
-            </div>
+<nav>
+    <div class="nav-container">
+        <h1 data-aos="fade-right">Media Nexus</h1>
+        <ul data-aos="fade-down">
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="talent.html">Our Talent</a></li>
+            <li><a href="creators.html">For Creators</a></li>
+            <li><a href="jobs.html">Jobs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div data-aos="fade-left">
+            <a href="https://discord.gg/TxCWBEQnJYk" class="nav-btn">Get in Touch</a>
         </div>
-    </nav>
+    </div>
+</nav>
 
 <!-- HERO -->
 <section class="services-hero">
@@ -575,229 +480,283 @@ nav {
     </p>
 </section>
 
-<!-- SERVICES -->
-
-
-<!-- OVERLAYS -->
+<!-- SERVICE CARDS -->
 <div class="svc-wrap">
-  <div class="svc-card"><div class="svc-logo g1">🤝</div><div class="svc-title">Sponsorship Deals</div><button class="svc-btn" onclick="openModal('s1')">Details</button></div>
-  <div class="svc-card"><div class="svc-logo g2">🎯</div><div class="svc-title">Creator Management</div><button class="svc-btn" onclick="openModal('s2')">Details</button></div>
-  <div class="svc-card"><div class="svc-logo g3">📡</div><div class="svc-title">Media Management</div><button class="svc-btn" onclick="openModal('s3')">Details</button></div>
-  <div class="svc-card"><div class="svc-logo g4">🚀</div><div class="svc-title">Video Creation</div><button class="svc-btn" onclick="openModal('s4')">Details</button></div>
-  <div class="svc-card"><div class="svc-logo g5">💡</div><div class="svc-title">Script Writing</div><button class="svc-btn" onclick="openModal('s5')">Details</button></div>
-  <div class="svc-card"><div class="svc-logo g6">⚡</div><div class="svc-title">Graphic Design</div><button class="svc-btn" onclick="openModal('s6')">Details</button></div>
-  <div class="svc-card"><div class="svc-logo g7">🎨</div><div class="svc-title">Web Development</div><button class="svc-btn" onclick="openModal('s7')">Details</button></div>
-  <div class="svc-card"><div class="svc-logo g8">📊</div><div class="svc-title">Minecraft Development</div><button class="svc-btn" onclick="openModal('s8')">Details</button></div>
-  <div class="svc-card"><div class="svc-logo g9">🌐</div><div class="svc-title">Event Management</div><button class="svc-btn" onclick="openModal('s9')">Details</button></div>
+  <div class="svc-card" data-aos="fade-up" data-aos-delay="50">
+    <div class="svc-logo g1">🤝</div>
+    <div class="svc-title">Sponsorship Deals</div>
+    <button class="svc-btn" onclick="openModal('s1')">Details</button>
+  </div>
+  <div class="svc-card" data-aos="fade-up" data-aos-delay="100">
+    <div class="svc-logo g2">🎯</div>
+    <div class="svc-title">Creator Management</div>
+    <button class="svc-btn" onclick="openModal('s2')">Details</button>
+  </div>
+  <div class="svc-card" data-aos="fade-up" data-aos-delay="150">
+    <div class="svc-logo g3">📡</div>
+    <div class="svc-title">Media Management</div>
+    <button class="svc-btn" onclick="openModal('s3')">Details</button>
+  </div>
+  <div class="svc-card" data-aos="fade-up" data-aos-delay="200">
+    <div class="svc-logo g4">🚀</div>
+    <div class="svc-title">Video Creation</div>
+    <button class="svc-btn" onclick="openModal('s4')">Details</button>
+  </div>
+  <div class="svc-card" data-aos="fade-up" data-aos-delay="250">
+    <div class="svc-logo g5">💡</div>
+    <div class="svc-title">Script Writing</div>
+    <button class="svc-btn" onclick="openModal('s5')">Details</button>
+  </div>
+  <div class="svc-card" data-aos="fade-up" data-aos-delay="300">
+    <div class="svc-logo g6">⚡</div>
+    <div class="svc-title">Graphic Design</div>
+    <button class="svc-btn" onclick="openModal('s6')">Details</button>
+  </div>
+  <div class="svc-card" data-aos="fade-up" data-aos-delay="350">
+    <div class="svc-logo g7">🎨</div>
+    <div class="svc-title">Web Development</div>
+    <button class="svc-btn" onclick="openModal('s7')">Details</button>
+  </div>
+  <div class="svc-card" data-aos="fade-up" data-aos-delay="400">
+    <div class="svc-logo g8">📊</div>
+    <div class="svc-title">Minecraft Development</div>
+    <button class="svc-btn" onclick="openModal('s8')">Details</button>
+  </div>
+  <div class="svc-card" data-aos="fade-up" data-aos-delay="450">
+    <div class="svc-logo g9">🌐</div>
+    <div class="svc-title">Event Management</div>
+    <button class="svc-btn" onclick="openModal('s9')">Details</button>
+  </div>
 </div>
 
 <!-- MODALS -->
 <div class="overlay-bg" id="modal-s1" onclick="closeModal(event,'modal-s1')">
   <div class="overlay-card">
-     <button class="close-btn" onclick="document.getElementById('modal-s1').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=80" alt="">
-     <div class="overlay-text">
-         <span class="overlay-tag">Sponsorship</span>
-         <p class="overlay-title">Sponsorship Deals</p>
-         <ul class="overlay-list">
-             <li>Brand matching & alignment</li>
-             <li>Deal term negotiation</li>
-             <li>Long-term collaborations</li>
-             <li>Performance analysis</li>
-             <li>Rate optimization</li>
-         </ul>
-     </div>
+    <button class="close-btn" onclick="document.getElementById('modal-s1').classList.remove('active')">✕</button>
+    <img class="overlay-img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=80" alt="">
+    <div class="overlay-text">
+      <span class="overlay-tag">Sponsorship</span>
+      <p class="overlay-title">Sponsorship Deals</p>
+      <ul class="overlay-list">
+        <li>Brand matching & alignment</li>
+        <li>Deal term negotiation</li>
+        <li>Long-term collaborations</li>
+        <li>Performance analysis</li>
+        <li>Rate optimization</li>
+      </ul>
+    </div>
   </div>
 </div>
 
 <div class="overlay-bg" id="modal-s2" onclick="closeModal(event,'modal-s2')">
-<div class="overlay-card">
-<button class="close-btn" onclick="document.getElementById('modal-s2').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=700&q=80" alt="">
-<div class="overlay-text">
-<span class="overlay-tag">Management</span>
-<p class="overlay-title">Creator Management</p>
-<ul class="overlay-list">
-<li>Tailored content strategies</li>
-<li>Brand positioning & identity</li>
-<li>Engaged audience growth</li>
-<li>Measurable analytics</li>
-<li>Holistic brand support</li>
-</ul>
-</div></div></div>
+  <div class="overlay-card">
+    <button class="close-btn" onclick="document.getElementById('modal-s2').classList.remove('active')">✕</button>
+    <img class="overlay-img" src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=900&q=80" alt="">
+    <div class="overlay-text">
+      <span class="overlay-tag">Management</span>
+      <p class="overlay-title">Creator Management</p>
+      <ul class="overlay-list">
+        <li>Tailored content strategies</li>
+        <li>Brand positioning & identity</li>
+        <li>Engaged audience growth</li>
+        <li>Measurable analytics</li>
+        <li>Holistic brand support</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<div class="overlay-bg" id="modal-s3" onclick="closeModal(event,'modal-s3')"><div class="overlay-card"><button class="close-btn" onclick="document.getElementById('modal-s3').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700&q=80" alt=""><div class="overlay-text"><span class="overlay-tag">Media</span><p class="overlay-title">Media Management</p><ul class="overlay-list"><li>Content planning</li><li>Social media posting</li><li>Asset organisation</li><li>Multi-platform coordination</li><li>Engagement analytics</li></ul></div></div></div>
+<div class="overlay-bg" id="modal-s3" onclick="closeModal(event,'modal-s3')">
+  <div class="overlay-card">
+    <button class="close-btn" onclick="document.getElementById('modal-s3').classList.remove('active')">✕</button>
+    <img class="overlay-img" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900&q=80" alt="">
+    <div class="overlay-text">
+      <span class="overlay-tag">Media</span>
+      <p class="overlay-title">Media Management</p>
+      <ul class="overlay-list">
+        <li>Content planning</li>
+        <li>Social media posting</li>
+        <li>Asset organisation</li>
+        <li>Multi-platform coordination</li>
+        <li>Engagement analytics</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <div class="overlay-bg" id="modal-s4" onclick="closeModal(event,'modal-s4')">
-<div class="overlay-card">
-<button class="close-btn" onclick="document.getElementById('modal-s4').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80" alt="">
-<div class="overlay-text">
-<span class="overlay-tag">Video</span>
-<p class="overlay-title">Video Creation</p>
-<ul class="overlay-list">
-<li>Creative Storytelling</li>
-<li>Seamless Editing</li>
-<li>Visual Effects</li>
-<li>Sound Design</li>
-<li>Rapid Delivery</li>
-</ul>
-</div></div></div>
+  <div class="overlay-card">
+    <button class="close-btn" onclick="document.getElementById('modal-s4').classList.remove('active')">✕</button>
+    <img class="overlay-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80" alt="">
+    <div class="overlay-text">
+      <span class="overlay-tag">Video</span>
+      <p class="overlay-title">Video Creation</p>
+      <ul class="overlay-list">
+        <li>Creative Storytelling</li>
+        <li>Seamless Editing</li>
+        <li>Visual Effects</li>
+        <li>Sound Design</li>
+        <li>Rapid Delivery</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <div class="overlay-bg" id="modal-s5" onclick="closeModal(event,'modal-s5')">
-<div class="overlay-card">
-<button class="close-btn" onclick="document.getElementById('modal-s5').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=700&q=80" alt="">
-<div class="overlay-text">
-<span class="overlay-tag">Script</span>
-<p class="overlay-title">Script Writing</p>
-<ul class="overlay-list">
-<li>Story Development</li>
-<li>Persuasive Messaging</li>
-<li>Scene Structuring</li>
-<li>Dialogue Writing</li>
-<li>Tailored for Your Audience</li>
-</ul>'</div></div></div>
+  <div class="overlay-card">
+    <button class="close-btn" onclick="document.getElementById('modal-s5').classList.remove('active')">✕</button>
+    <img class="overlay-img" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=900&q=80" alt="">
+    <div class="overlay-text">
+      <span class="overlay-tag">Script</span>
+      <p class="overlay-title">Script Writing</p>
+      <ul class="overlay-list">
+        <li>Story Development</li>
+        <li>Persuasive Messaging</li>
+        <li>Scene Structuring</li>
+        <li>Dialogue Writing</li>
+        <li>Tailored for Your Audience</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <div class="overlay-bg" id="modal-s6" onclick="closeModal(event,'modal-s6')">
-<div class="overlay-card">
-<button class="close-btn" onclick="document.getElementById('modal-s6').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=700&q=80" alt="">
-<div class="overlay-text">
-<span class="overlay-tag">Graphic</span>
-<p class="overlay-title">Graphic Design</p>
-<ul class="overlay-list">
-<li>Custom Logos and Branding</li>
-<li>Stream Overlays</li>
-<li>YouTube Thumbnails</li>
-<li>Social Media Graphics</li>
-<li>Infographic Design</li>
-</ul>
-</div></div></div>
+  <div class="overlay-card">
+    <button class="close-btn" onclick="document.getElementById('modal-s6').classList.remove('active')">✕</button>
+    <img class="overlay-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&q=80" alt="">
+    <div class="overlay-text">
+      <span class="overlay-tag">Graphic</span>
+      <p class="overlay-title">Graphic Design</p>
+      <ul class="overlay-list">
+        <li>Custom Logos and Branding</li>
+        <li>Stream Overlays</li>
+        <li>YouTube Thumbnails</li>
+        <li>Social Media Graphics</li>
+        <li>Infographic Design</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <div class="overlay-bg" id="modal-s7" onclick="closeModal(event,'modal-s7')">
-<div class="overlay-card">
-<button class="close-btn" onclick="document.getElementById('modal-s7').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=700&q=80" alt="">
-<div class="overlay-text">
-<span class="overlay-tag">Website</span>
-<p class="overlay-title">Web Development</p>
-<ul class="overlay-list">
-<li>Bespoke Websites</li>
-<li>Discord Bot Solutions</li>
-<li>API Integration</li>
-<li>Seamless Responsiveness</li>
-<li>Reliable Hosting & Support</li>
-</ul>
-</div></div></div>
+  <div class="overlay-card">
+    <button class="close-btn" onclick="document.getElementById('modal-s7').classList.remove('active')">✕</button>
+    <img class="overlay-img" src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&q=80" alt="">
+    <div class="overlay-text">
+      <span class="overlay-tag">Website</span>
+      <p class="overlay-title">Web Development</p>
+      <ul class="overlay-list">
+        <li>Bespoke Websites</li>
+        <li>Discord Bot Solutions</li>
+        <li>API Integration</li>
+        <li>Seamless Responsiveness</li>
+        <li>Reliable Hosting & Support</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <div class="overlay-bg" id="modal-s8" onclick="closeModal(event,'modal-s8')">
-<div class="overlay-card">
-<button class="close-btn" onclick="document.getElementById('modal-s8').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=80" alt="">
-<div class="overlay-text">
-<span class="overlay-tag">Minecraft</span>
-<p class="overlay-title">Minecraft Development</p>
-<ul class="overlay-list">
-<li>Custom Plugins</li>
-<li>Server Development</li>
-<li>Redstone Creations</li>
-<li>Adventure Maps</li>
-<li>Performance Optimization</li>
-</ul>
-</div></div></div>
+  <div class="overlay-card">
+    <button class="close-btn" onclick="document.getElementById('modal-s8').classList.remove('active')">✕</button>
+    <img class="overlay-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80" alt="">
+    <div class="overlay-text">
+      <span class="overlay-tag">Minecraft</span>
+      <p class="overlay-title">Minecraft Development</p>
+      <ul class="overlay-list">
+        <li>Custom Plugins</li>
+        <li>Server Development</li>
+        <li>Redstone Creations</li>
+        <li>Adventure Maps</li>
+        <li>Performance Optimization</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <div class="overlay-bg" id="modal-s9" onclick="closeModal(event,'modal-s9')">
-<div class="overlay-card">
-<button class="close-btn" onclick="document.getElementById('modal-s9').classList.remove('active')">✕</button><img class="overlay-img" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=700&q=80" alt="">
-<div class="overlay-text">
-<span class="overlay-tag">Event</span>
-<p class="overlay-title">Event Management</p>
-<ul class="overlay-list">
-<li>Event Concept Design</li>
-<li>Venue Coordination</li>
-<li>Vendor Management</li>
-<li>Guest Experience</li>
-<li>Flawless Execution</li>
-</ul>
-</div></div></div>
+  <div class="overlay-card">
+    <button class="close-btn" onclick="document.getElementById('modal-s9').classList.remove('active')">✕</button>
+    <img class="overlay-img" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&q=80" alt="">
+    <div class="overlay-text">
+      <span class="overlay-tag">Event</span>
+      <p class="overlay-title">Event Management</p>
+      <ul class="overlay-list">
+        <li>Event Concept Design</li>
+        <li>Venue Coordination</li>
+        <li>Vendor Management</li>
+        <li>Guest Experience</li>
+        <li>Flawless Execution</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
+<!-- FOOTER -->
 <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-brand" data-aos="fade-up">
-                <h1 style="margin-bottom:10px;">Media Nexus</h1>
-                <p style="font-size:12px; color:var(--main); text-transform:uppercase; font-weight:600;">Creator Partnerships</p>
-                <p style="color:var(--text-muted); font-size:14px; margin-top:20px; max-width:280px;">Connecting creators with brands to build meaningful partnerships that drive growth.</p>
-                <div style="display:flex; gap:15px; margin-top:25px;">
-                    <a href="#" style="color:#fff; opacity:0.6;"><i class="fab fa-x-twitter"></i></a>
-                    <a href="#" style="color:#fff; opacity:0.6;"><i class="fab fa-instagram"></i></a>
-                    <a href="https://discord.gg/TxCWBEQnJYk" style="color:#fff; opacity:0.6;"><i class="fab fa-discord"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="index.html#services">Our Services</a></li>
-                    <li><a href="talent.html">Our Talents</a></li>
-                    <li><a href="jobs.html">Careers</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links" data-aos="fade-up" data-aos-delay="200">
-                <h4>For Creators</h4>
-                <ul>
-                    <li><a href="#">How It Works</a></li>
-                    <li><a href="#">Creator FAQ</a></li>
-                    <li><a href="#">Apply Now</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links" data-aos="fade-up" data-aos-delay="300">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
+    <div class="footer-container">
+        <div class="footer-brand" data-aos="fade-up">
+            <h1 style="margin-bottom:10px;">Media Nexus</h1>
+            <p style="font-size:12px; color:var(--main); text-transform:uppercase; font-weight:600;">Creator Partnerships</p>
+            <p style="color:var(--text-muted); font-size:14px; margin-top:20px; max-width:280px;">Connecting creators with brands to build meaningful partnerships that drive growth.</p>
+            <div style="display:flex; gap:15px; margin-top:25px;">
+                <a href="#" style="color:#fff; opacity:0.6; text-decoration:none;">𝕏</a>
+                <a href="#" style="color:#fff; opacity:0.6; text-decoration:none;">📸</a>
+                <a href="https://discord.gg/TxCWBEQnJYk" style="color:#fff; opacity:0.6; text-decoration:none;">💬</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2026 <span style="color:var(--main); font-weight:600;">Media Nexus</span>. All rights reserved.</p>
+        <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="index.html#services">Our Services</a></li>
+                <li><a href="talent.html">Our Talents</a></li>
+                <li><a href="jobs.html">Careers</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
         </div>
-    </footer>
-<style>
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; position: fixed; width: 100%; z-index: 1000; background: rgba(10, 5, 20, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-    .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 8%; }
-    nav h1 { font-weight: 800; font-size: 1.5rem; background: linear-gradient(to right, #fff, var(--main)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    nav ul { display: flex; list-style: none; gap: 25px; }
-    nav ul li a { color: #fff; text-decoration: none; font-size: 14px; opacity: 0.7; transition: 0.3s; }
-    nav ul li a:hover { opacity: 1; color: var(--main); }
-    .main-footer { background: #05020a; padding: 80px 8% 40px 8%; border-top: 1px solid var(--border); }
-    .footer-container { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 50px; max-width: 1400px; margin: 0 auto; }
-    .footer-links h4 { color: var(--main); font-size: 14px; margin-bottom: 25px; text-transform: uppercase; }
-    .footer-links ul { list-style: none; }
-    .footer-links ul li { margin-bottom: 12px; }
-    .footer-links ul li a { text-decoration: none; color: #fff; opacity: 0.7; transition: 0.3s; font-size: 14px; }
-    .footer-links ul li a:hover { opacity: 1; color: var(--main); padding-left: 5px; }
-    .footer-bottom { margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
-
-    @media(max-width: 992px) { .contact-section { grid-template-columns: 1fr; } .footer-container { grid-template-columns: 1fr 1fr; } }
-    @media(max-width: 600px) { .form-group-row { grid-template-columns: 1fr; } .footer-container { grid-template-columns: 1fr; } }
-</style>
+        <div class="footer-links" data-aos="fade-up" data-aos-delay="200">
+            <h4>For Creators</h4>
+            <ul>
+                <li><a href="#">How It Works</a></li>
+                <li><a href="#">Creator FAQ</a></li>
+                <li><a href="#">Apply Now</a></li>
+            </ul>
+        </div>
+        <div class="footer-links" data-aos="fade-up" data-aos-delay="300">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 <span style="color:var(--main); font-weight:600;">Media Nexus</span>. All rights reserved.</p>
+    </div>
+</footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 AOS.init({ duration: 1000, once: true });
+
 const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
+document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+});
+
 function openModal(id) {
-  document.getElementById('modal-' + id).classList.add('active');
+    document.getElementById('modal-' + id).classList.add('active');
 }
+
 function closeModal(e, id) {
-  if (e.target === e.currentTarget) document.getElementById(id).classList.remove('active');
+    if (e.target === e.currentTarget) document.getElementById(id).classList.remove('active');
 }
+
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') document.querySelectorAll('.overlay-bg.active').forEach(m => m.classList.remove('active'));
+    if (e.key === 'Escape') document.querySelectorAll('.overlay-bg.active').forEach(m => m.classList.remove('active'));
 });
 </script>
-
 </body>
 </html>
